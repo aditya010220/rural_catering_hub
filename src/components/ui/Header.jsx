@@ -160,41 +160,44 @@ const Header = () => {
             
             {/* Search Icon */}
             <div className="relative hidden md:block">
-              {isSearchExpanded ? (
-                <form onSubmit={handleSearch} className="flex items-center bg-surface rounded-lg shadow-md border border-primary/20">
-                  <Input
-                    type="search"
-                    placeholder="Search authentic dishes..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-64 border-0 bg-transparent focus:ring-2 focus:ring-primary/20 rounded-lg"
-                    autoFocus
-                  />
-                  <Button
-                    variant="ghost"
-                    iconName="Search"
-                    type="submit"
-                    className="ml-2 text-primary hover:bg-primary-50"
-                  />
-                  <Button
-                    variant="ghost"
-                    iconName="X"
-                    onClick={() => {
-                      setIsSearchExpanded(false);
-                      setSearchQuery('');
-                    }}
-                    className="ml-1 text-text-secondary hover:text-error"
-                  />
-                </form>
-              ) : (
-                <Button
-                  variant="ghost"
-                  iconName="Search"
-                  onClick={() => setIsSearchExpanded(true)}
-                  className="text-primary hover:bg-primary-50 transition-all duration-200 hover:scale-110"
-                />
-              )}
-            </div>
+  {isSearchExpanded ? (
+    <form 
+      onSubmit={handleSearch} 
+      className="flex items-center bg-gradient-to-r from-white to-gray-50 rounded-xl shadow-lg border-2 border-primary/30 backdrop-blur-sm transform transition-all duration-300 hover:shadow-xl"
+    >
+      <Input
+        type="search"
+        placeholder="Search authentic dishes..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="w-72 border-0 bg-transparent focus:ring-2 focus:ring-primary/40 rounded-xl text-gray-800 placeholder-gray-500 font-medium"
+        autoFocus
+      />
+      <Button
+        variant="ghost"
+        iconName="Search"
+        type="submit"
+        className="ml-3 text-primary hover:bg-primary/10 hover:text-primary-600 transition-all duration-200 rounded-lg p-2"
+      />
+      <Button
+        variant="ghost"
+        iconName="X"
+        onClick={() => {
+          setIsSearchExpanded(false);
+          setSearchQuery('');
+        }}
+        className="ml-2 text-gray-400 hover:text-red-500 hover:bg-red-50 transition-all duration-200 rounded-lg p-2"
+      />
+    </form>
+  ) : (
+    <Button
+      variant="ghost"
+      iconName="Search"
+      onClick={() => setIsSearchExpanded(true)}
+      className="text-primary hover:bg-primary/10 hover:text-primary-600 transition-all duration-300 hover:scale-110 rounded-xl p-3 shadow-md hover:shadow-lg"
+    />
+  )}
+</div>
 
             {/* Cart Icon (Mobile) */}
             <div className="lg:hidden relative">
@@ -240,7 +243,8 @@ const Header = () => {
                     </div>
                     
                     <div className="p-3 space-y-1">
-                      <Button
+                     
+                        <Button
                         variant="ghost"
                         iconName="User"
                         onClick={() => handleNavigation('/user-account-dashboard')}
@@ -248,7 +252,6 @@ const Header = () => {
                       >
                         My Account
                       </Button>
-                      
                       <div className="border-t border-primary/10 my-2"></div>
                       
                       <Button
