@@ -20,8 +20,8 @@ const Header = () => {
   const navigationItems = [
     { label: 'Home', path: '/home-landing-page', icon: 'Home', description: 'Welcome Home' },
     { label: 'Browse Dishes', path: '/product-catalog-browse', icon: 'UtensilsCrossed', description: 'Discover Local Cuisine' },
-    { label: 'Cart', path: '/shopping-cart-checkout', icon: 'ShoppingCart', showBadge: true, description: 'Your Orders' },
-    { label: 'Account', path: '/user-account-dashboard', icon: 'User', requiresAuth: false, description: 'Your Profile' },
+    { label: 'Order', path: '/shopping-cart-checkout', icon: 'ShoppingCart', showBadge: true, description: 'Your Orders' },
+   
   ];
 
   // Scroll detection for navbar styling
@@ -128,7 +128,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center space-x-3">
             {navigationItems.map((item) => (
               shouldShowNavItem(item) && (
                 <div key={item.path} className="relative">
@@ -140,7 +140,7 @@ const Header = () => {
                     className={`relative transition-all duration-200 hover:scale-105 ${
                       isActiveRoute(item.path) 
                         ? 'bg-gradient-to-r from-primary to-primary-600 text-white shadow-md' 
-                        : 'text-text-primary hover:bg-primary-50 hover:text-primary'
+                        : 'text-text-primary '
                     }`}
                   >
                     <span className="font-medium">{item.label}</span>
@@ -159,7 +159,7 @@ const Header = () => {
           <div className="flex items-center space-x-3">
             
             {/* Search Icon */}
-            <div className="relative hidden md:block">
+            {/* <div className="relative hidden md:block">
   {isSearchExpanded ? (
     <form 
       onSubmit={handleSearch} 
@@ -197,7 +197,47 @@ const Header = () => {
       className="text-primary hover:bg-primary/10 hover:text-primary-600 transition-all duration-300 hover:scale-110 rounded-xl p-3 shadow-md hover:shadow-lg"
     />
   )}
+</div> */}
+<div className="relative hidden md:block mt-1 ml-4 mb-1">
+  {isSearchExpanded ? (
+    <form 
+      onSubmit={handleSearch} 
+      className="flex items-center bg-gradient-to-r from-white to-gray-50 rounded-xl shadow-lg border-2 border-primary/30 backdrop-blur-sm transition-all duration-300 hover:shadow-xl px-3 py-2"
+    >
+      <Input
+        type="search"
+        placeholder="Search authentic dishes..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="w-80 border-0 bg-transparent  focus:ring-primary/5 rounded-xl text-gray-800 placeholder-gray-500 font-medium"
+        autoFocus
+      />
+      <Button
+        variant="ghost"
+        iconName="Search"
+        type="submit"
+        className="ml-3 text-blue-600 hover:text-white hover:bg-blue-600 transition-all duration-200 rounded-lg p-2 shadow-sm hover:shadow-md"
+      />
+      <Button
+        variant="ghost"
+        iconName="X"
+        onClick={() => {
+          setIsSearchExpanded(false);
+          setSearchQuery('');
+        }}
+        className="ml-2 text-gray-400 hover:text-white hover:bg-red-500 transition-all duration-200 rounded-lg p-2 shadow-sm hover:shadow-md"
+      />
+    </form>
+  ) : (
+    <Button
+      variant="ghost"
+      iconName="Search"
+      onClick={() => setIsSearchExpanded(true)}
+      className="text-blue-600 hover:text-white hover:bg-blue-600 transition-all duration-300 hover:scale-110 rounded-xl p-3 shadow-md hover:shadow-lg"
+    />
+  )}
 </div>
+
 
             {/* Cart Icon (Mobile) */}
             <div className="lg:hidden relative">
@@ -224,7 +264,7 @@ const Header = () => {
                   onClick={() => setIsAccountDropdownOpen(!isAccountDropdownOpen)}
                   className={`transition-all duration-200 hover:scale-110 ${
                     isAccountDropdownOpen 
-                      ? 'bg-primary text-white' :'text-primary hover:bg-primary-50'
+                      ? 'bg-primary text-white' :'text-primary'
                   }`}
                 />
                 

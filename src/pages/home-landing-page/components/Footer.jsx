@@ -35,7 +35,7 @@ const Footer = () => {
     ],
     contact: {
       email: "hello@ruralcateringhub.com",
-      phone: "+91 98765 43210",
+      phone: "+91 9555631308",
       address: "123 Heritage Lane, Cultural District, Mumbai, Maharashtra 400001"
     },
     socialMedia: [

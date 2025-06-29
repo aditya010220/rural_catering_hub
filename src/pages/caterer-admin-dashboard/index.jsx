@@ -23,7 +23,7 @@ const CatererAdminDashboard = () => {
     {
       id: "ORD001",
       customerName: "Priya Sharma",
-      customerPhone: "+91 98765 43210",
+      customerPhone: "+91 9555631308",
       orderTime: "10:30 AM",
       deliveryDate: "25/12/2024",
       deliveryTime: "6:00 PM",
